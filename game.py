@@ -8,6 +8,8 @@ class Game:
         self.board = Board()
         self.dice = Dice()
         self.game_over = False
+        self.rounds = 0
+        self.max_rounds = 10
 
     def start(self):
         self.setup_players()
@@ -57,6 +59,9 @@ class Game:
 
             if all(p.retired for p in self.players):
                 self.end_game()
+            self.rounds += 1
+            if self.rounds >= self.max_rounds:
+                    self.end_game()
 
     def print_summary(self):
         print("\n--- Game Summary ---")

@@ -25,10 +25,11 @@ class Player:
         self.career = None
         self.house = None
         self.position = 0
+        self.retired = False
 
-    def move(self, steps: int):
+    def move(self, steps: int, board_size: int = 25):
         """Move the player forward by `steps` spaces."""
-        self.position += steps
+        self.position = (self.position + steps) % board_size
 
     def summary(self):
         """Return a summary of player's status."""
